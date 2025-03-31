@@ -6,7 +6,6 @@ matplotlib
 # Forecasting models
 statsmodels             # For SARIMA
 prophet                # For Facebook Prophet (you may also need pystan as a backend)
-
-
+plotly
 openpyxl  # for Excel support
 scikit-learn
