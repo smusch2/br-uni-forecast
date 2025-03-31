@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+matplotlib
+
+# Forecasting models
+statsmodels             # For SARIMA
+prophet                # For Facebook Prophet (you may also need pystan as a backend)
+
+
+openpyxl  # for Excel support
+scikit-learn
