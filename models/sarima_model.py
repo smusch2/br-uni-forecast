@@ -1,7 +1,12 @@
 #models/sarima_model.py
-def run_sarima(data, order=(1, 1, 1), seasonal_order=(0, 1, 1, 12)):
-    from statsmodels.tsa.statespace.sarimax import SARIMAX
-    model = SARIMAX(data, order=order, seasonal_order=seasonal_order)
-    results = model.fit()
-    forecast = results.get_forecast(steps=12)
-    return forecast.predicted_mean, forecast.conf_int()
+
+import pandas as pd
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+from sklearn.metrics import mean_squared_error
+
+def run_sarima(train, test, order, seasonal_order, steps):
+    model = SARIMAX(train, order=order, seasonal_order=seasonal_order)
+    model_fit = model.fit(disp=False)
+    forecast = model_fit.forecast(steps=steps)
+    error = mean_squared_error(test, forecast)
+    return forecast, error
